@@ -1,0 +1,47 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+static String result;
+    static String kangaroo(int x1, int v1, int x2, int v2) {
+        if((x2>x1&&v2>v1) || (x2>x1&&v2==v1)){
+            /* if velocity of kanagaru 2 is grater than kangaroo 1 and at the same time
+            * starting point of kangaroo 2 is greater tha kangaroo 1 then distance will not be covered and both
+            * kangarooes will not meet at same point, second condition shows that if staring point for kangaroo 2
+            * is greater than kangaroo 1 and at the same time the velocity of both is same, there is no chance that
+            * both kangaroo will land on same point st same time
+            */
+            result = "NO";
+        }else{
+        if((x1-x2)%(v1-v2)==0)
+        {
+            /* lets look at the example, kanagaru 1 starts from 0 at velocity of 3,
+            * kangaroo 2 starts from point 4 at velocity of 2 points per second,
+            * difference of both's position at start is -4 (kangaroo 1 is 4 point behind than kangaroo 2) 
+            * and velocity difference is 1 (kangaroo 1 is faster than kangaroo 2),
+            * now the only step left is to check if they both meet at same point at same time,
+            * modulo of their both starting point and velocity gives the answer, if modulo is zero then 
+            * they both will meet at same time at same point and if greater than zero then they both will not meet
+            */
+           result = "YES";
+        }
+        else{
+            result = "NO";
+        }
+        }
+    return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int x1 = in.nextInt();
+        int v1 = in.nextInt();
+        int x2 = in.nextInt();
+        int v2 = in.nextInt();
+        String result = kangaroo(x1, v1, x2, v2);
+        System.out.println(result);
+    }
+}
